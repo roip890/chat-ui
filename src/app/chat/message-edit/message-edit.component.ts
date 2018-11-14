@@ -52,7 +52,9 @@ export class MessageEditComponent implements OnInit, OnDestroy {
         // and any other pipe operators like map if required
       )
       .subscribe(messages => {
+        console.log(messages);
         this.store.dispatch(new MessageActions.FetchMessages());
+        console.log(messages);
         let uuid;
         do {
           uuid = this.uidService.next();
