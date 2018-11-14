@@ -4,6 +4,7 @@ import { StoreModule } from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import { ChatModule } from "./chat/chat.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {NgxUidModule} from "ngx-uid";
 
 import { AppComponent } from './app.component';
 import { reducers } from './store/app.reducers';
@@ -25,6 +26,7 @@ import {HeaderComponent} from "./header/header.component";
     FormsModule,
     HttpClientModule,
     ChatModule,
+    NgxUidModule.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     ModalModule.forRoot()

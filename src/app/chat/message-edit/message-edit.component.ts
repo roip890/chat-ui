@@ -6,12 +6,16 @@ import {
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import * as fromMessage from '../store/message.reducers';
+import * as MessageActions from "../store/message.actions";
 
-import * as fromApp from '../../store/app.reducers';
 import {Message} from "../message.model";
 import {ChatService} from "../socket/chat.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {IconUrlModalComponent} from "./icon-url-modal/icon-url-modal.component";
+import {NgxUidService} from "ngx-uid";
+import {Observable} from "rxjs";
+import {take} from "rxjs/operators";
 
 @Component({
   selector: 'app-message-edit',
@@ -23,19 +27,42 @@ export class MessageEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') messageForm: NgForm;
   iconUrl: string;
   modalRef: BsModalRef;
+  messageState: Observable<fromMessage.State>;
 
-  constructor(private store: Store<fromApp.AppState>, private chatService: ChatService, private modalService: BsModalService) {
+  constructor(private store: Store<fromMessage.FeatureState>,
+              private chatService: ChatService,
+              private modalService: BsModalService,
+              private uidService: NgxUidService) {
     this.iconUrl = 'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png';
   }
 
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.messageState = this.store.select('messages');
+    this.store.dispatch(new MessageActions.FetchMessages());
+
+  }
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    const newMessage = new Message(value.username, value.text, Date.now(), this.iconUrl);
-    // this.chatService.sendMessage(newMessage);
-    form.controls['text'].reset();
+
+    this.messageState
+      .pipe(
+        take(1)
+        // and any other pipe operators like map if required
+      )
+      .subscribe(messages => {
+        this.store.dispatch(new MessageActions.FetchMessages());
+        let uuid;
+        do {
+          uuid = this.uidService.next();
+        } while (messages.messages.some(message => message.id !== null && message.id === uuid));
+        const newMessage = new Message(uuid, value.username, value.text, Date.now(), this.iconUrl);
+        console.log(newMessage);
+        this.chatService.sendMessage(newMessage);
+        form.controls['text'].reset();
+      });
+
   }
 
   setIconUrl(iconUrl : string) {

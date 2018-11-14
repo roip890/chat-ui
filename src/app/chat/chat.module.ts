@@ -14,6 +14,8 @@ import {ChatService} from "./socket/chat.service";
 import {DropdownDirective} from "./tools/dropdown.directive";
 import {BsModalService} from "ngx-bootstrap";
 import {IconUrlModalComponent} from "./message-edit/icon-url-modal/icon-url-modal.component";
+import {NgxUidService} from "ngx-uid";
+import {MessageIdFactory} from "./tools/message-id-generator.directive";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,11 @@ import {IconUrlModalComponent} from "./message-edit/icon-url-modal/icon-url-moda
     EffectsModule.forFeature([MessageEffects])
   ],
   providers: [ChatService,
-    BsModalService],
+    BsModalService,
+    {
+      provide: NgxUidService,
+      useClass: MessageIdFactory
+    }],
   exports: [
     ChatComponent,
     IconUrlModalComponent,
