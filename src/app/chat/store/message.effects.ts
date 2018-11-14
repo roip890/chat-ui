@@ -14,6 +14,7 @@ export class MessageEffects {
   messageFetch = this.actions$
     .ofType(MessageActions.FETCH_MESSAGES)
     .pipe(switchMap((action: MessageActions.FetchMessages) => {
+      console.log("fetch_message");
       return this.httpClient.get<Message[]>('https://spotimchatex.firebaseio.com/messages.json', {
         observe: 'body',
         responseType: 'json'
@@ -35,6 +36,7 @@ export class MessageEffects {
     .ofType(MessageActions.STORE_MESSAGES)
     .pipe(withLatestFrom(this.store.select('messages')),
       switchMap(([action, state]) => {
+        console.log("store_message");
         const req = new HttpRequest('PUT', 'https://spotimchatex.firebaseio.com/messages.json', state.messages, {reportProgress: true});
         return this.httpClient.request(req);
       }));
