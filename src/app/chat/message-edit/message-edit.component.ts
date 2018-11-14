@@ -34,7 +34,7 @@ export class MessageEditComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm) {
     const value = form.value;
     const newMessage = new Message(value.username, value.text, Date.now(), this.iconUrl);
-    this.chatService.sendMessage(newMessage);
+    // this.chatService.sendMessage(newMessage);
     form.controls['text'].reset();
   }
 
