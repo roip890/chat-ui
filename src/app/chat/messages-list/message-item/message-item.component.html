@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="media">
+        <div class="media-left" style="margin: 10px;">
+          <img class="media-object rounded message-icon" src="{{message.avatar}}" alt="{{ message.username }}">
+        </div>
+        <div class="media-body" style="margin: 10px;">
+          <h4 class="media-heading">{{ message.username }} &nbsp;&nbsp;&nbsp; <span>{{ message.time  | date:'short' }}</span></h4>
+          <p class="">{{ message.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

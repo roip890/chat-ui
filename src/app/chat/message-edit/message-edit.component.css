@@ -1,0 +1,28 @@
+.chat-footer, .icon-dropup {
+  background: -moz-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(49, 84, 129, 1)), color-stop(100%, rgba(39, 107, 130, 1)));
+  background: -webkit-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+  background: -o-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+  background: -ms-linear-gradient(125deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+  background: linear-gradient(325deg, rgba(39, 107, 130, 1) 0, rgba(49, 84, 129, 1) 100%);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.message-icon {
+  width:48px;
+  height: auto;
+}
+
+.dropdown-menu {
+  width: 68px !important;
+  min-width: 68px !important;
+}
+
+.dropdown-icon {
+  width: 68px !important;
+  min-width: 68px !important;
+}

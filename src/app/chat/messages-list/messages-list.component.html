@@ -1,0 +1,9 @@
+<div class="row messages-list">
+  <div class="col-12">
+    <app-message-item class="col-12"
+                      *ngFor="let message of (messageState | async).messages; let i = index"
+                      [message]="message"
+                      [index]="i">
+    </app-message-item>
+  </div>
+</div>

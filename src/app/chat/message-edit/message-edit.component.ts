@@ -28,6 +28,7 @@ export class MessageEditComponent implements OnInit, OnDestroy {
     this.iconUrl = 'https://cdn.iconscout.com/icon/free/png-256/avatar-372-456324.png';
   }
 
+
   ngOnInit() { }
 
   onSubmit(form: NgForm) {
