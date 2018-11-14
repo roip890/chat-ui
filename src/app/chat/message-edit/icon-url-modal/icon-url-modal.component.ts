@@ -13,7 +13,7 @@ export class IconUrlModalComponent implements OnInit{
   @ViewChild('f') messageForm: NgForm;
   public onClose: Subject<boolean>;
 
-  constructor(private modalRef: BsModalRef) {
+  constructor(public modalRef: BsModalRef) {
 
   }
 
