@@ -58,7 +58,6 @@ export class MessageEditComponent implements OnInit, OnDestroy {
           uuid = this.uidService.next();
         } while (messages.messages.some(message => message.id !== null && message.id === uuid));
         const newMessage = new Message(uuid, value.username, value.text, Date.now(), this.iconUrl);
-        console.log(newMessage);
         this.chatService.sendMessage(newMessage);
         form.controls['text'].reset();
       });

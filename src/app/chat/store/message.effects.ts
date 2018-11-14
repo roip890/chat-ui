@@ -25,7 +25,7 @@ export class MessageEffects {
         }
         return {
           type: MessageActions.SET_MESSAGES,
-          payload: messages
+          payload: messages.sort((a,b) => a.time - b.time)
         };
       }
 ));
