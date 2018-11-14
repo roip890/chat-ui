@@ -1,0 +1,35 @@
+<div class="alert-box icon-url-modal">
+  <div class="modal-header">
+    <h4 class="modal-title" style="color: silver;">Set Avatar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="row">
+            <div class="col-10 form-group">
+              <input
+                placeholder="Url"
+                type="text"
+                id="url"
+                class="form-control"
+                name="url"
+                ngModel
+                required>
+            </div>
+            <div class="col-2 form-group">
+              <button
+                class="btn btn-info"
+                type="submit"
+                [disabled]="!f.valid">{{ 'Set' }}</button>
+            </div>
+            <div class="col-1"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
