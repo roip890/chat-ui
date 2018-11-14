@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  chat_socket: 'https://spotim-demo-chat-server.herokuapp.com',
+  chat_event: 'spotim/chat',
+  chat_room: 'roi_peretz_spot_im_chat_ex'
 };
 
 /*
