@@ -43,11 +43,6 @@ export class MessagesListComponent implements OnInit, OnDestroy {
               this.store.dispatch(new MessageActions.StoreMessages());
             }
           });
-
-
-
-
-
       });
 
   }
